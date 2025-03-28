@@ -1,19 +1,171 @@
 ---
-title: 'document' 
+title: "Report Title"
+author: "Author"
+date: "Last compiled on `r Sys.Date()`"
 output: 
   html_document:
-    self_contained: true
     toc: true
     toc_float: true
-  bookdown::pdf_document2:
-    extra_dependencies: ["float"]
-    toc: true
+    df_print: kable
+    code_folding: hide
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(inputFile, encoding = encoding, output_dir =  paste0(Sys.getenv("RKJCOLLAB"), "/Project_Folder/reports")) })
 ---
 
-
-
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(
+  root.dir = paste0(Sys.getenv("RKJCOLLAB"), "/Project_Folder"))
 
-knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse) # for data wrangling
+library(kableExtra) # for extra table functionality
+library(table1) # to create pretty table 1s
+library(khroma) # for color-blind friendly colors
+
+# Reference:
+# cookbook      https://bookdown.org/yihui/rmarkdown-cookbook/
+# kableExtra    https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview
+# khroma        https://cran.r-project.org/web/packages/khroma/vignettes/tol.html
+#               https://cran.r-project.org/web/packages/khroma/vignettes/crameri.html
 
 ```
+
+```{css, echo=FALSE}
+.table-hover > tbody > tr:hover { /* Allows color to change on hover for kableExtra */
+  background-color: #1434A4;
+  color: white;
+  font-weight: bold;
+}
+
+mark { /* Allows you to highlight using tags in text */
+  background-color: yellow;
+  color: black;
+}
+
+body{ /* Change font and size */
+  font-family: Helvetica;
+  font-size: 12pt;
+  margins: 200px; /* Only works if you're hiding the TOC with Hmisc */
+}
+
+.graybox { /* Add gray box behind text */
+  padding: 1em;
+  background: #bbbbbb;
+  color: black;
+  border: 2px solid black;
+}
+```
+
+`r Hmisc::hidingTOC()`
+
+# **Overview**
+
+Summary of:
+
+* Prior knowledge and context
+* The purpose of the report
+
+After circulating or discussing the report, you may also want to add a summary of the notes and decisions up here.
+
+***
+
+**Previous Report:** If applicable, what is the previous report and what did it address? Include name of the report file.
+
+***
+
+<br>
+<br>
+<br>
+
+# **Background**
+
+Include more detailed background information in this section if needed.
+
+***
+
+<br>
+<br>
+<br>
+
+# **Load Data**
+
++ **dataname1** short description of data 1
++ **dataname2** short description of data 2
++ **dataname3** short description of data 3
+
+```{r load_data}
+dataname1 = read.csv("path/to/data/here/dataname1.csv")
+dataname2 = readRDS("path/to/data/here/dataname2.rds")
+load("path/to/data/here/dataname3.Rdata")
+```
+
+***
+
+<br>
+<br>
+<br>
+
+# **Descriptive Section Title**
+
+A short description of the section.
+
+```{r name_chunk}
+
+```
+
+This is <mark> highlighted text. </mark>
+
+<br>
+
+:::: {.graybox data-latex=""}
+
+**This information is in a gray box.**
+
+Table 1. Numbers are cool
+
+| Status    | Left Aligned   | Middle Aligned  | Right Aligned  |
+| --------- |:---------------|:---------------:|---------------:|
+| Control   | 1              | 0               | 0              | 
+| Case      | 0              | 1               | 2              |
+
+::::
+
+<br>
+
+
+
+***
+
+<br>
+<br>
+<br>
+
+# **Decisions and Next Steps**
+
+* Reiterate the points to discuss
+* What was the outcome decided?
+
+***
+
+<br>
+<br>
+<br>
+
+# **Session Info**
+
+```{r session_info}
+sessionInfo()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
