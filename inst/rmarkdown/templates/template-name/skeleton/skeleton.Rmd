@@ -23,10 +23,11 @@ library(table1) # to create pretty table 1s
 library(khroma) # for color-blind friendly colors
 
 # Reference:
-# cookbook      https://bookdown.org/yihui/rmarkdown-cookbook/
-# kableExtra    https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview
-# khroma        https://cran.r-project.org/web/packages/khroma/vignettes/tol.html
-#               https://cran.r-project.org/web/packages/khroma/vignettes/crameri.html
+# cookbook            https://bookdown.org/yihui/rmarkdown-cookbook/
+# kableExtra          https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview
+# color stuff         https://cran.r-project.org/web/packages/khroma/vignettes/tol.html
+#                     https://cran.r-project.org/web/packages/khroma/vignettes/crameri.html
+# math expressions    https://rpruim.github.io/s341/S19/from-class/MathinRmd.html
 
 ```
 
